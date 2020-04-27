@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="calendar.js"></script>
+    
+
+    <title>Hello, world!</title>
+   
+  </head>
+  <body >
+          
+    <div id = "monthnumholder" style=" display: none"  onload="getCurrentMonthNum();"></div>
+    
+ 
+    <div class="container" id="id_cal-container"> 
+     
+      <div class= "row nd_app-container" > <!-- 1st row -->
+        
+        <div class="col-sm-2  nd_calmonths"  ><!--1st column - month name column here-->
+          <div class= "row">
+          <div onclick = 'fillcalcontent("id_cal-day", 0, getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >JAN </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 1, getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >FEB </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 2, getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >MAR </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 3,getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >APR </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 4,getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >MAY </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 5,getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >JUN </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 6,getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >JUL</button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 7,getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >AUG </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 8,getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >SEP </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 9,getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >OCT </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 10, getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >NOV </button></div>
+          <div onclick = 'fillcalcontent("id_cal-day", 11, getCurrentYear());' class = "col-sm-12" style="padding: 3px;"> <button type="button" class="btn btn-sm btn-primary" style="background-color: #5e96ae;" >DEC </button></div>
+
+        </div>
+      </div>
+        
+        <div class="col-sm-4 nd_cal-container" >  <!-- 2nd  column where we store the calendar-->
+        <!-- This is the weekdays header row. -->
+       
+        <div class = "row" align="center" >
+          <div class="col-sm-12 nd_monthnamebox" id="id_calmonthname">
+          </div> 
+      </div> 
+        <div class="row"  >
+          <div class="col-sm-* nd_cal-day" style="background-color: #d9effc;">
+          Sun
+          </div>
+          <div class="col-sm-* nd_cal-day"  style="background-color: #d9effc;">
+          Mon
+          </div>
+          <div class="col-sm-* nd_cal-day" style="background-color: #d9effc;">
+            Tue
+          </div>
+          <div class="col-sm-* nd_cal-day" style="background-color: #d9effc;">
+            Wed
+          </div>
+          <div class="col-sm-* nd_cal-day" style="background-color: #d9effc;">
+            Thu
+          </div>
+          <div class="col-sm-* nd_cal-day" style="background-color: #d9effc;">
+            Fri
+          </div>
+          <div class="col-sm-* nd_cal-day" style="background-color: #d9effc;">
+            Sat
+          </div>
+        </div>
+      <div class="row container" align="center" id="id_cal-day" >
+      </div>
+      
+        </div> <!-- second column ends here. -->
+      
+        <!-- Third column where we store the calendar day details-->
+
+       
+        <div class="col-sm-5 nd_caldaydetails" id= "nd_caldaydetails" >
+
+          <div class="row" style="background-color: aquamarine;">
+            <div class="col-sm-12" id="id_dateholder" >hi</div>
+          </div>
+          <form action="/action_page.php">
+            <label for="fname">Time :</label>
+            <input type="text" id="fname" name="fname" value="Enter time">
+            <label for="lname">Task name:</label>
+            <input type="text" id="lname" name="lname" value="Enter task name">
+            <input type="submit" value="Add">
+          </form> 
+        
+          
+        </div>
+    </div>
+  </div>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+      
+    </script>
+  </body>
+</html>
